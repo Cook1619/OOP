@@ -1,16 +1,20 @@
 const MAX = 800;
 let container = document.getElementById('square-container');
 class Square {
-  constructor(x, y) {
+  constructor(x, y, size) {
     this.div = document.createElement('div');
     this.div.classList.add('square');
     this.div.style.left = `${x}px`;
     this.div.style.top = `${y}px`;
-    this.div.addEventListener('click', function(){
+    this.div.style.width = `${size}px`;
+    this.div.style.height = `${size}px`;
+    this.div.addEventListener('click', () => {
       this.updateColor();
-    })
+      this.updateLocation();
+    });
     this.updateColor();
     container.appendChild(this.div);
+    document.body.appendChild(container);
   }
   updateLocation() {
     let xVal = randomVal(0, MAX);
@@ -31,7 +35,8 @@ sqButton.addEventListener('click', insertSquare);
 function insertSquare() {
   let xVal = randomVal(0, MAX);
   let yVal = randomVal(0, MAX);
-  let sq = new Square(xVal, yVal);
+  let size = randomVal(25,100);
+  let sq = new Square(xVal, yVal, size);
 }
 
 function randomVal(min, max) {
