@@ -14,7 +14,6 @@ class Square {
     });
     this.updateColor();
     container.appendChild(this.div);
-    document.body.appendChild(container);
   }
   updateLocation() {
     let xVal = randomVal(0, MAX);
@@ -24,7 +23,7 @@ class Square {
   }
   updateColor() {
     //creates random color using the randomVal function, the min is max coordinates with the min and max rgb values
-    let randomColor = `rgb(${randomVal(0.255)},${randomVal(0.255)},${randomVal(0.255)})`;
+    let randomColor = `rgb(${randomVal(0, 255)},${randomVal(0, 255)},${randomVal(0, 255)})`;
     this.div.style.backgroundColor = randomColor;
   }
 }
@@ -35,7 +34,7 @@ sqButton.addEventListener('click', insertSquare);
 function insertSquare() {
   let xVal = randomVal(0, MAX);
   let yVal = randomVal(0, MAX);
-  let size = randomVal(25,100);
+  let size = randomVal(25, 100);
   let sq = new Square(xVal, yVal, size);
 }
 
